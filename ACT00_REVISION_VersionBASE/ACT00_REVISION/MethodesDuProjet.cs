@@ -44,7 +44,7 @@ namespace ACT00_REVISION
             return z;
         }
         // fonction qui permet de déterminer si oui ou non un triangle est rectangle en se basant sur ses 3 côtés
-        public bool TriangleRectangle(double a, double b, double c)
+        public bool TriangleRectangle(ref bool ok, double a, double b, double c)
         {
             bool ok = false;
             double hypothenuse = Hypo(b, c);
@@ -74,7 +74,7 @@ namespace ACT00_REVISION
             }
         }
         // fonction booléenne qui détermine si on a un triangle ou pas en se basant sur les longueurs des côtés
-        public bool Triangle(double a, double b, double c)
+        public bool Triangle(ref bool ok, double a, double b, double c)
         {
             bool ok = false;
 
@@ -96,7 +96,7 @@ namespace ACT00_REVISION
             }
         }
         // fonction booléenne qui détermine si un triangle est équilatéral sur base de ses côtés
-        public bool Equi(double a, double b, double c)
+        public bool Equi(ref bool ok, double a, double b, double c)
         {
             bool ok = false;
             if ((a == b) && (a == c))

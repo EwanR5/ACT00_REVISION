@@ -10,9 +10,9 @@ namespace ACT00_REVISION
 
             string rep;
             
-            double c1 = 0;
-            double c2 = 0;
-            double c3 = 0;
+            double c1;
+            double c2;
+            double c3;
             bool ok = false;
             string methode;
             string infos;
@@ -21,26 +21,27 @@ namespace ACT00_REVISION
             // ...... COMPLETER
 
             Console.WriteLine("Testez les polygones !");
-            //On recommence tant que désiré
             do
             {
-                //lecture des 3 côtés
-                // ...
-                // ...
-                // ...
-
-                // ordonner les côtés => APPEL ORDONNECOTES
-                // ...
-                Outils.Triangle(c1, c2, c3);
-                if (ok = true)
+                Console.WriteLine("Quel est la longueur de votre premier coté ?");
+                c1 =double.Parse(Console.ReadLine());
+                Console.WriteLine("Quel est la longueur de votre second coté ?");
+                c2 = double.Parse(Console.ReadLine());
+                Console.WriteLine("Quel est la longueur de votre dernier coté ?");
+                c3 = double.Parse(Console.ReadLine());
+            } while (c1 > 0 && c2 > 0 && c3 > 0);
+            do
+            {
+                Outils.Triangle(ref ok, c1, c2, c3);
+                if (ok == true)
                 {
                     methode = "triangle";
                     Outils.Affiche(out infos, ok, methode);
                     Console.WriteLine(infos);
                     Console.ReadLine();
 
-                    Outils.Equi(c1, c2, c3);
-                    if (ok = true)
+                    Outils.Equi(ref ok, c1, c2, c3);
+                    if (ok == true)
                     {
                         methode = "equilateral";
                         Outils.Affiche(out infos, ok, methode);
@@ -49,8 +50,8 @@ namespace ACT00_REVISION
                     }
                     else
                     {
-                        Outils.TriangleRectangle(c1, c2, c3);
-                        if (ok = true)
+                        Outils.TriangleRectangle(ref ok, c1, c2, c3);
+                        if (ok == true)
                         {
                             methode = "rectangle";
                             Outils.Affiche(out infos, ok, methode);
@@ -64,17 +65,29 @@ namespace ACT00_REVISION
                             Console.WriteLine(infos);
                             Console.ReadLine();
                         }
-                        // vérification du cas isocèle et affichage dans le cas positif
-                        //...
-                        //...
-                        //... A vous de voir en combien de lignes...
+                        Outils.Isocele(ref ok, c1, c2, c3);
+                        if (ok == true)
+                        {
+                            methode = "isocele";
+                            Outils.Affiche(out infos, ok, methode);
+                            Console.WriteLine(infos);
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            methode = "isocele";
+                            Outils.Affiche(out infos, ok, methode);
+                            Console.WriteLine(infos);
+                            Console.ReadLine();
+                        }
                     }
                 }
-                else // si ce n'est pas un triangle
+                else
                 {
-                    // préparation et affichage du résultat négataif du test 'triangle' avec la procédure 'Affiche'
-                    // ...
-                    // ...
+                    methode = "triangle";
+                    Outils.Affiche(out infos, ok, methode);
+                    Console.WriteLine(infos);
+                    Console.ReadLine();
                 }
                 // reprise ?
                 Console.WriteLine("Voulez-vous tester un autre polygône ? (Tapez espace)");
